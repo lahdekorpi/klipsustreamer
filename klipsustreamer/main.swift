@@ -19,7 +19,7 @@ class Klipsustreamer:NSObject {
             var clipType = ""
             var clipData = ""
             
-            if(newCount > self.counter) {
+            if(newCount != self.counter) {
                 self.counter = newCount
                 if let str: String = self.pasteboard.string(forType: NSPasteboardTypeHTML) {
                     clipType = "html"
