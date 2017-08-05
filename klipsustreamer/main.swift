@@ -1,14 +1,13 @@
 //
 //  klipsustreamer
-//
-//  Created by Toni Lähdekorpi on 5.8.2017.
+//  A simple CLI tool for macOS to monitor clipboard changes and output the contents as a JSON stream
 //  Copyright © 2017 Toni Lähdekorpi. All rights reserved.
 //
 
 import Foundation
 import AppKit
 
-class CLIInput:NSObject {
+class Klipsustreamer:NSObject {
     var clipTimer:Timer? = nil // Define timer
     var counter = 0 // Define clipboard change counter
 
@@ -19,6 +18,7 @@ class CLIInput:NSObject {
             let newCount = self.pasteboard.changeCount
             var clipType = ""
             var clipData = ""
+            
             if(newCount > self.counter) {
                 self.counter = newCount
                 if let str: String = self.pasteboard.string(forType: NSPasteboardTypeHTML) {
@@ -54,8 +54,10 @@ if(arguments.count > 1 && (arguments[1]=="--help" || arguments[1]=="-h" || argum
     if(arguments.count > 2 && arguments[1]=="-i") {
         interval = (arguments[2] as NSString).doubleValue
     }
-    let cli = CLIInput()
+
+    let cli = Klipsustreamer()
     cli.checkChanges(interval: interval)
+
     let theRL = RunLoop.current
     while theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) { }
 }
