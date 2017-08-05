@@ -49,7 +49,7 @@ let arguments = CommandLine.arguments
 var interval: Double = 0.1
 
 if(arguments.count > 1 && (arguments[1]=="--help" || arguments[1]=="-h" || arguments[1]=="-?")) {
-    print("klipsustreamer 1.0.0\n\nUsage:\n -h - Show help\n -i - Set update interval in seconds (default -i 0.1)")
+    print("klipsustreamer 1.0.1\n\nUsage:\n -h - Show help\n -i - Set update interval in seconds (default -i 0.1)")
 } else {
     if(arguments.count > 2 && arguments[1]=="-i") {
         interval = (arguments[2] as NSString).doubleValue
