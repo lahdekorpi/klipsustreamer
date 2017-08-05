@@ -10,7 +10,9 @@ Download the binary from https://github.com/lahdekorpi/klipsustreamer/releases a
 Download or clone the sources and open the project with Xcode, then build.
 ### Option 3
 Run:  
-`sudo wget https://github.com/lahdekorpi/klipsustreamer/releases/download/v1.0.0/klipsustreamer -O /usr/local/bin/klipsustreamer && chmod a+rx /usr/local/bin/klipsustreamer`
+```bash
+sudo wget https://github.com/lahdekorpi/klipsustreamer/releases/download/v1.0.0/klipsustreamer -O /usr/local/bin/klipsustreamer && sudo chmod a+rx /usr/local/bin/klipsustreamer
+```  
 _Make sure you have /usr/local/bin in your $PATH_
 
 ## Usage
@@ -25,6 +27,24 @@ You can change the polling interval with `-i <seconds>`. It defaults to 0.1.
 By default it's enough to just bundle and call `klipsustreamer` and parse for every `\n` found.
 
 ### Output examples:
-**Text:** `{"type":"text","data":"Hello World!"}`  
-**HTML:** `{"type":"html","data":"<meta charset='utf-8'><span style=\"color: rgb(0, 0, 0); font-family: &quot;helvetica neue&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Hello World!<\/span>"}`
-**RTF:** `{"type":"rtf","data":"{\\rtf1\\ansi\\ansicpg1252\\cocoartf1504\\cocoasubrtf830\n{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;}\n{\\*\\expandedcolortbl;;}\n\\pard\\tx566\\tx1133\\tx1700\\tx2267\\tx2834\\tx3401\\tx3968\\tx4535\\tx5102\\tx5669\\tx6236\\tx6803\\pardirnatural\\partightenfactor0\n\n\\f0\\b\\fs24 \\cf0 Hello World!}"}`  
+**Text:**
+```json
+{"type":"text","data":"Hello World!"}
+```  
+**HTML:**
+```json
+{"type":"html","data":"<meta charset='utf-8'><span style=\"color: rgb(0, 0, 0); font-family: &quot;helvetica neue&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Hello World!<\/span>"}
+```  
+**RTF:**
+```json
+{"type":"rtf","data":"{\\rtf1\\ansi\\ansicpg1252\\cocoartf1504\\cocoasubrtf830\n{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;}\n{\\*\\expandedcolortbl;;}\n\\pard\\tx566\\tx1133\\tx1700\\tx2267\\tx2834\\tx3401\\tx3968\\tx4535\\tx5102\\tx5669\\tx6236\\tx6803\\pardirnatural\\partightenfactor0\n\n\\f0\\b\\fs24 \\cf0 Hello World!}"}
+```
+
+## FAQ
+
+### Why not listen to keyboard CMD+C?
+This is a common way to enhance the polling method. It however must be noted that there are multiple ways to copy stuff to the clipboard (through context menus, functionality in applications, automation etc). Using CMD+C is just one of those.  
+Since klipsustream is so lightweight, it can be used with short polling times eliminating the need for external triggers.
+
+### Why not images or other data?
+At this moment, the focus is on outputting JSON data that can easily be parsed. Outputting images or other data would require to either base64 encode the data or find an alternative data transfer method for this. Pull requests are welcome though.
