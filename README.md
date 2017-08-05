@@ -11,7 +11,7 @@ Download or clone the sources and open the project with Xcode, then build.
 ### Option 3
 Run:  
 ```bash
-sudo wget https://github.com/lahdekorpi/klipsustreamer/releases/download/v1.0.0/klipsustreamer -O /usr/local/bin/klipsustreamer && sudo chmod a+rx /usr/local/bin/klipsustreamer
+sudo wget https://github.com/lahdekorpi/klipsustreamer/releases/download/v1.0.1/klipsustreamer -O /usr/local/bin/klipsustreamer && sudo chmod a+rx /usr/local/bin/klipsustreamer
 ```  
 _Make sure you have /usr/local/bin in your $PATH_
 
