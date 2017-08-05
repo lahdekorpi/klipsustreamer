@@ -48,6 +48,3 @@ Since klipsustream is so lightweight, it can be used with short polling times el
 
 ### Why not images or other data?
 At this moment, the focus is on outputting JSON data that can easily be parsed. Outputting images or other data would require to either base64 encode the data or find an alternative data transfer method for this. Pull requests are welcome though.
-
-### How lightweight it is?
-These are just ballpark numbers, but it consumes about 1.8MB of RAM in standby with no data in the clipboard and CPU usage is around 0.1% with a common.
